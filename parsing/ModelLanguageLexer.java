@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 ContextFreeLanguageModelChecker/parsing/ModelLanguage.g 2017-04-22 19:07:25
+// $ANTLR 3.5.2 ContextFreeLanguageModelChecker/parsing/ModelLanguage.g 2017-04-23 13:52:48
 
 package ContextFreeLanguageModelChecker.parsing;
 
@@ -12,10 +12,14 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class ModelLanguageLexer extends Lexer {
 	public static final int EOF=-1;
-	public static final int T__6=6;
 	public static final int T__7=7;
-	public static final int ID=4;
-	public static final int NUM=5;
+	public static final int T__8=8;
+	public static final int T__9=9;
+	public static final int T__10=10;
+	public static final int T__11=11;
+	public static final int P=4;
+	public static final int S=5;
+	public static final int WS=6;
 
 	// delegates
 	// delegators
@@ -32,10 +36,10 @@ public class ModelLanguageLexer extends Lexer {
 	}
 	@Override public String getGrammarFileName() { return "ContextFreeLanguageModelChecker/parsing/ModelLanguage.g"; }
 
-	// $ANTLR start "T__6"
-	public final void mT__6() throws RecognitionException {
+	// $ANTLR start "T__7"
+	public final void mT__7() throws RecognitionException {
 		try {
-			int _type = T__6;
+			int _type = T__7;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
 			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:12:6: ( ':=' )
 			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:12:8: ':='
@@ -51,17 +55,17 @@ public class ModelLanguageLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__6"
+	// $ANTLR end "T__7"
 
-	// $ANTLR start "T__7"
-	public final void mT__7() throws RecognitionException {
+	// $ANTLR start "T__8"
+	public final void mT__8() throws RecognitionException {
 		try {
-			int _type = T__7;
+			int _type = T__8;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:13:6: ( ';' )
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:13:8: ';'
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:13:6: ( '[' )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:13:8: '['
 			{
-			match(';'); 
+			match('['); 
 			}
 
 			state.type = _type;
@@ -71,17 +75,77 @@ public class ModelLanguageLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "T__7"
+	// $ANTLR end "T__8"
 
-	// $ANTLR start "NUM"
-	public final void mNUM() throws RecognitionException {
+	// $ANTLR start "T__9"
+	public final void mT__9() throws RecognitionException {
 		try {
-			int _type = NUM;
+			int _type = T__9;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:46:5: ( ( '0' .. '9' )+ )
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:46:7: ( '0' .. '9' )+
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:14:6: ( ']' )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:14:8: ']'
 			{
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:46:7: ( '0' .. '9' )+
+			match(']'); 
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "T__9"
+
+	// $ANTLR start "T__10"
+	public final void mT__10() throws RecognitionException {
+		try {
+			int _type = T__10;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:15:7: ( '{' )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:15:9: '{'
+			{
+			match('{'); 
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "T__10"
+
+	// $ANTLR start "T__11"
+	public final void mT__11() throws RecognitionException {
+		try {
+			int _type = T__11;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:16:7: ( '}' )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:16:9: '}'
+			{
+			match('}'); 
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "T__11"
+
+	// $ANTLR start "S"
+	public final void mS() throws RecognitionException {
+		try {
+			int _type = S;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:50:3: ( ( '0' .. '9' )+ )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:50:5: ( '0' .. '9' )+
+			{
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:50:5: ( '0' .. '9' )+
 			int cnt1=0;
 			loop1:
 			while (true) {
@@ -123,15 +187,15 @@ public class ModelLanguageLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "NUM"
+	// $ANTLR end "S"
 
-	// $ANTLR start "ID"
-	public final void mID() throws RecognitionException {
+	// $ANTLR start "P"
+	public final void mP() throws RecognitionException {
 		try {
-			int _type = ID;
+			int _type = P;
 			int _channel = DEFAULT_TOKEN_CHANNEL;
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:47:5: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:47:7: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:51:4: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )* )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:51:6: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
 			{
 			if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
 				input.consume();
@@ -141,7 +205,7 @@ public class ModelLanguageLexer extends Lexer {
 				recover(mse);
 				throw mse;
 			}
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:47:26: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:51:25: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' )*
 			loop2:
 			while (true) {
 				int alt2=2;
@@ -179,21 +243,89 @@ public class ModelLanguageLexer extends Lexer {
 			// do for sure before leaving
 		}
 	}
-	// $ANTLR end "ID"
+	// $ANTLR end "P"
+
+	// $ANTLR start "WS"
+	public final void mWS() throws RecognitionException {
+		try {
+			int _type = WS;
+			int _channel = DEFAULT_TOKEN_CHANNEL;
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:53:5: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:53:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+			{
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:53:9: ( ' ' | '\\t' | '\\r' | '\\n' )+
+			int cnt3=0;
+			loop3:
+			while (true) {
+				int alt3=2;
+				int LA3_0 = input.LA(1);
+				if ( ((LA3_0 >= '\t' && LA3_0 <= '\n')||LA3_0=='\r'||LA3_0==' ') ) {
+					alt3=1;
+				}
+
+				switch (alt3) {
+				case 1 :
+					// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:
+					{
+					if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
+						input.consume();
+					}
+					else {
+						MismatchedSetException mse = new MismatchedSetException(null,input);
+						recover(mse);
+						throw mse;
+					}
+					}
+					break;
+
+				default :
+					if ( cnt3 >= 1 ) break loop3;
+					EarlyExitException eee = new EarlyExitException(3, input);
+					throw eee;
+				}
+				cnt3++;
+			}
+
+			 _channel = HIDDEN; 
+			}
+
+			state.type = _type;
+			state.channel = _channel;
+		}
+		finally {
+			// do for sure before leaving
+		}
+	}
+	// $ANTLR end "WS"
 
 	@Override
 	public void mTokens() throws RecognitionException {
-		// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:8: ( T__6 | T__7 | NUM | ID )
-		int alt3=4;
+		// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:8: ( T__7 | T__8 | T__9 | T__10 | T__11 | S | P | WS )
+		int alt4=8;
 		switch ( input.LA(1) ) {
 		case ':':
 			{
-			alt3=1;
+			alt4=1;
 			}
 			break;
-		case ';':
+		case '[':
 			{
-			alt3=2;
+			alt4=2;
+			}
+			break;
+		case ']':
+			{
+			alt4=3;
+			}
+			break;
+		case '{':
+			{
+			alt4=4;
+			}
+			break;
+		case '}':
+			{
+			alt4=5;
 			}
 			break;
 		case '0':
@@ -207,7 +339,7 @@ public class ModelLanguageLexer extends Lexer {
 		case '8':
 		case '9':
 			{
-			alt3=3;
+			alt4=6;
 			}
 			break;
 		case 'A':
@@ -263,40 +395,76 @@ public class ModelLanguageLexer extends Lexer {
 		case 'y':
 		case 'z':
 			{
-			alt3=4;
+			alt4=7;
+			}
+			break;
+		case '\t':
+		case '\n':
+		case '\r':
+		case ' ':
+			{
+			alt4=8;
 			}
 			break;
 		default:
 			NoViableAltException nvae =
-				new NoViableAltException("", 3, 0, input);
+				new NoViableAltException("", 4, 0, input);
 			throw nvae;
 		}
-		switch (alt3) {
+		switch (alt4) {
 			case 1 :
-				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:10: T__6
-				{
-				mT__6(); 
-
-				}
-				break;
-			case 2 :
-				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:15: T__7
+				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:10: T__7
 				{
 				mT__7(); 
 
 				}
 				break;
-			case 3 :
-				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:20: NUM
+			case 2 :
+				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:15: T__8
 				{
-				mNUM(); 
+				mT__8(); 
+
+				}
+				break;
+			case 3 :
+				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:20: T__9
+				{
+				mT__9(); 
 
 				}
 				break;
 			case 4 :
-				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:24: ID
+				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:25: T__10
 				{
-				mID(); 
+				mT__10(); 
+
+				}
+				break;
+			case 5 :
+				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:31: T__11
+				{
+				mT__11(); 
+
+				}
+				break;
+			case 6 :
+				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:37: S
+				{
+				mS(); 
+
+				}
+				break;
+			case 7 :
+				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:39: P
+				{
+				mP(); 
+
+				}
+				break;
+			case 8 :
+				// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:1:41: WS
+				{
+				mWS(); 
 
 				}
 				break;

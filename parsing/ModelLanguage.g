@@ -20,13 +20,14 @@ program returns [Statement value]
     : s=statement EOF { $value = s; }
     ;
 
-statement returns [Statement value]
-    : s=base_statement       { $value = s; }
-      ( ';' s=base_statement { $value = new SeqStatement($value,s); } )* 
+statement returns [String value]
+    : '{' S
+      ('[' P  { $value = new PExpr($P.getText()); } ']' ) 
+      '}'      								    { $value = new NumExpr(Integer.parseInt($S.getText())); }
     ;
 
 base_statement returns [Statement value]
-    : ID ':=' e=arith_expr                      { $value = new AssignStatement($ID.getText(), e); }
+    : P ':=' e=arith_expr                      { $value = new AssignStatement($P.getText(), e); }
     ;
 
 arith_expr returns [ArithExpr value]
@@ -37,11 +38,16 @@ mult_arith_expr returns [ArithExpr value]
     : e=base_arith_expr       { $value = e; }
     ;
 
+base_state_expr returns [ArithExpr value]
+	: S { $value = new NumExpr(Integer.parseInt($S.getText())); }
+	;
 
 base_arith_expr returns [ArithExpr value]
-    : NUM { $value = new NumExpr(Integer.parseInt($NUM.getText())); }
-    | ID  { $value = new IdExpr($ID.getText()); }
+    : S { $value = new NumExpr(Integer.parseInt($S.getText())); }
+    | P  { $value = new PExpr($P.getText()); }
     ;
 
-NUM : '0'..'9'+ ;
-ID  : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')* ;
+S : '0'..'9'+ ;
+P  : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'0'..'9')* ;
+
+WS  :   (' '|'\t'|'\r'|'\n')+ { $channel = HIDDEN; } ; 

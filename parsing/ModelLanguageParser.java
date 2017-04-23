@@ -1,4 +1,4 @@
-// $ANTLR 3.5.2 ContextFreeLanguageModelChecker/parsing/ModelLanguage.g 2017-04-22 19:07:25
+// $ANTLR 3.5.2 ContextFreeLanguageModelChecker/parsing/ModelLanguage.g 2017-04-23 13:52:48
 
 package ContextFreeLanguageModelChecker.parsing;
 
@@ -14,13 +14,18 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class ModelLanguageParser extends Parser {
 	public static final String[] tokenNames = new String[] {
-		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "NUM", "':='", "';'"
+		"<invalid>", "<EOR>", "<DOWN>", "<UP>", "P", "S", "WS", "':='", "'['", 
+		"']'", "'{'", "'}'"
 	};
 	public static final int EOF=-1;
-	public static final int T__6=6;
 	public static final int T__7=7;
-	public static final int ID=4;
-	public static final int NUM=5;
+	public static final int T__8=8;
+	public static final int T__9=9;
+	public static final int T__10=10;
+	public static final int T__11=11;
+	public static final int P=4;
+	public static final int S=5;
+	public static final int WS=6;
 
 	// delegates
 	public Parser[] getDelegates() {
@@ -48,7 +53,7 @@ public class ModelLanguageParser extends Parser {
 		Statement value = null;
 
 
-		Statement s =null;
+		String s =null;
 
 		try {
 			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:20:5: (s= statement EOF )
@@ -77,49 +82,31 @@ public class ModelLanguageParser extends Parser {
 
 
 	// $ANTLR start "statement"
-	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:23:1: statement returns [Statement value] : s= base_statement ( ';' s= base_statement )* ;
-	public final Statement statement() throws RecognitionException {
-		Statement value = null;
+	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:23:1: statement returns [String value] : '{' S ( '[' P ']' ) '}' ;
+	public final String statement() throws RecognitionException {
+		String value = null;
 
 
-		Statement s =null;
+		Token P1=null;
+		Token S2=null;
 
 		try {
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:24:5: (s= base_statement ( ';' s= base_statement )* )
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:24:7: s= base_statement ( ';' s= base_statement )*
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:24:5: ( '{' S ( '[' P ']' ) '}' )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:24:7: '{' S ( '[' P ']' ) '}'
 			{
-			pushFollow(FOLLOW_base_statement_in_statement76);
-			s=base_statement();
-			state._fsp--;
-
-			 value = s; 
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:25:7: ( ';' s= base_statement )*
-			loop1:
-			while (true) {
-				int alt1=2;
-				int LA1_0 = input.LA(1);
-				if ( (LA1_0==7) ) {
-					alt1=1;
-				}
-
-				switch (alt1) {
-				case 1 :
-					// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:25:9: ';' s= base_statement
-					{
-					match(input,7,FOLLOW_7_in_statement94); 
-					pushFollow(FOLLOW_base_statement_in_statement98);
-					s=base_statement();
-					state._fsp--;
-
-					 value = new SeqStatement(value,s); 
-					}
-					break;
-
-				default :
-					break loop1;
-				}
+			match(input,10,FOLLOW_10_in_statement74); 
+			S2=(Token)match(input,S,FOLLOW_S_in_statement76); 
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:25:7: ( '[' P ']' )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:25:8: '[' P ']'
+			{
+			match(input,8,FOLLOW_8_in_statement85); 
+			P1=(Token)match(input,P,FOLLOW_P_in_statement87); 
+			 value = new PExpr(P1.getText()); 
+			match(input,9,FOLLOW_9_in_statement92); 
 			}
 
+			match(input,11,FOLLOW_11_in_statement103); 
+			 value = new NumExpr(Integer.parseInt(S2.getText())); 
 			}
 
 		}
@@ -137,25 +124,25 @@ public class ModelLanguageParser extends Parser {
 
 
 	// $ANTLR start "base_statement"
-	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:28:1: base_statement returns [Statement value] : ID ':=' e= arith_expr ;
+	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:29:1: base_statement returns [Statement value] : P ':=' e= arith_expr ;
 	public final Statement base_statement() throws RecognitionException {
 		Statement value = null;
 
 
-		Token ID1=null;
+		Token P3=null;
 		ArithExpr e =null;
 
 		try {
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:29:5: ( ID ':=' e= arith_expr )
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:29:7: ID ':=' e= arith_expr
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:30:5: ( P ':=' e= arith_expr )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:30:7: P ':=' e= arith_expr
 			{
-			ID1=(Token)match(input,ID,FOLLOW_ID_in_base_statement125); 
-			match(input,6,FOLLOW_6_in_base_statement127); 
-			pushFollow(FOLLOW_arith_expr_in_base_statement131);
+			P3=(Token)match(input,P,FOLLOW_P_in_base_statement143); 
+			match(input,7,FOLLOW_7_in_base_statement145); 
+			pushFollow(FOLLOW_arith_expr_in_base_statement149);
 			e=arith_expr();
 			state._fsp--;
 
-			 value = new AssignStatement(ID1.getText(), e); 
+			 value = new AssignStatement(P3.getText(), e); 
 			}
 
 		}
@@ -173,7 +160,7 @@ public class ModelLanguageParser extends Parser {
 
 
 	// $ANTLR start "arith_expr"
-	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:32:1: arith_expr returns [ArithExpr value] : e= mult_arith_expr ;
+	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:33:1: arith_expr returns [ArithExpr value] : e= mult_arith_expr ;
 	public final ArithExpr arith_expr() throws RecognitionException {
 		ArithExpr value = null;
 
@@ -181,10 +168,10 @@ public class ModelLanguageParser extends Parser {
 		ArithExpr e =null;
 
 		try {
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:33:5: (e= mult_arith_expr )
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:33:7: e= mult_arith_expr
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:34:5: (e= mult_arith_expr )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:34:7: e= mult_arith_expr
 			{
-			pushFollow(FOLLOW_mult_arith_expr_in_arith_expr177);
+			pushFollow(FOLLOW_mult_arith_expr_in_arith_expr195);
 			e=mult_arith_expr();
 			state._fsp--;
 
@@ -206,7 +193,7 @@ public class ModelLanguageParser extends Parser {
 
 
 	// $ANTLR start "mult_arith_expr"
-	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:36:1: mult_arith_expr returns [ArithExpr value] : e= base_arith_expr ;
+	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:37:1: mult_arith_expr returns [ArithExpr value] : e= base_arith_expr ;
 	public final ArithExpr mult_arith_expr() throws RecognitionException {
 		ArithExpr value = null;
 
@@ -214,10 +201,10 @@ public class ModelLanguageParser extends Parser {
 		ArithExpr e =null;
 
 		try {
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:37:5: (e= base_arith_expr )
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:37:7: e= base_arith_expr
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:38:5: (e= base_arith_expr )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:38:7: e= base_arith_expr
 			{
-			pushFollow(FOLLOW_base_arith_expr_in_mult_arith_expr208);
+			pushFollow(FOLLOW_base_arith_expr_in_mult_arith_expr226);
 			e=base_arith_expr();
 			state._fsp--;
 
@@ -238,45 +225,75 @@ public class ModelLanguageParser extends Parser {
 
 
 
+	// $ANTLR start "base_state_expr"
+	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:41:1: base_state_expr returns [ArithExpr value] : S ;
+	public final ArithExpr base_state_expr() throws RecognitionException {
+		ArithExpr value = null;
+
+
+		Token S4=null;
+
+		try {
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:42:2: ( S )
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:42:4: S
+			{
+			S4=(Token)match(input,S,FOLLOW_S_in_base_state_expr252); 
+			 value = new NumExpr(Integer.parseInt(S4.getText())); 
+			}
+
+		}
+		catch (RecognitionException re) {
+			reportError(re);
+			recover(input,re);
+		}
+		finally {
+			// do for sure before leaving
+		}
+		return value;
+	}
+	// $ANTLR end "base_state_expr"
+
+
+
 	// $ANTLR start "base_arith_expr"
-	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:41:1: base_arith_expr returns [ArithExpr value] : ( NUM | ID );
+	// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:45:1: base_arith_expr returns [ArithExpr value] : ( S | P );
 	public final ArithExpr base_arith_expr() throws RecognitionException {
 		ArithExpr value = null;
 
 
-		Token NUM2=null;
-		Token ID3=null;
+		Token S5=null;
+		Token P6=null;
 
 		try {
-			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:42:5: ( NUM | ID )
-			int alt2=2;
-			int LA2_0 = input.LA(1);
-			if ( (LA2_0==NUM) ) {
-				alt2=1;
+			// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:46:5: ( S | P )
+			int alt1=2;
+			int LA1_0 = input.LA(1);
+			if ( (LA1_0==S) ) {
+				alt1=1;
 			}
-			else if ( (LA2_0==ID) ) {
-				alt2=2;
+			else if ( (LA1_0==P) ) {
+				alt1=2;
 			}
 
 			else {
 				NoViableAltException nvae =
-					new NoViableAltException("", 2, 0, input);
+					new NoViableAltException("", 1, 0, input);
 				throw nvae;
 			}
 
-			switch (alt2) {
+			switch (alt1) {
 				case 1 :
-					// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:42:7: NUM
+					// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:46:7: S
 					{
-					NUM2=(Token)match(input,NUM,FOLLOW_NUM_in_base_arith_expr238); 
-					 value = new NumExpr(Integer.parseInt(NUM2.getText())); 
+					S5=(Token)match(input,S,FOLLOW_S_in_base_arith_expr272); 
+					 value = new NumExpr(Integer.parseInt(S5.getText())); 
 					}
 					break;
 				case 2 :
-					// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:43:7: ID
+					// ContextFreeLanguageModelChecker/parsing/ModelLanguage.g:47:7: P
 					{
-					ID3=(Token)match(input,ID,FOLLOW_ID_in_base_arith_expr248); 
-					 value = new IdExpr(ID3.getText()); 
+					P6=(Token)match(input,P,FOLLOW_P_in_base_arith_expr282); 
+					 value = new PExpr(P6.getText()); 
 					}
 					break;
 
@@ -299,14 +316,18 @@ public class ModelLanguageParser extends Parser {
 
 	public static final BitSet FOLLOW_statement_in_program49 = new BitSet(new long[]{0x0000000000000000L});
 	public static final BitSet FOLLOW_EOF_in_program51 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_base_statement_in_statement76 = new BitSet(new long[]{0x0000000000000082L});
-	public static final BitSet FOLLOW_7_in_statement94 = new BitSet(new long[]{0x0000000000000010L});
-	public static final BitSet FOLLOW_base_statement_in_statement98 = new BitSet(new long[]{0x0000000000000082L});
-	public static final BitSet FOLLOW_ID_in_base_statement125 = new BitSet(new long[]{0x0000000000000040L});
-	public static final BitSet FOLLOW_6_in_base_statement127 = new BitSet(new long[]{0x0000000000000030L});
-	public static final BitSet FOLLOW_arith_expr_in_base_statement131 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_mult_arith_expr_in_arith_expr177 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_base_arith_expr_in_mult_arith_expr208 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_NUM_in_base_arith_expr238 = new BitSet(new long[]{0x0000000000000002L});
-	public static final BitSet FOLLOW_ID_in_base_arith_expr248 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_10_in_statement74 = new BitSet(new long[]{0x0000000000000020L});
+	public static final BitSet FOLLOW_S_in_statement76 = new BitSet(new long[]{0x0000000000000100L});
+	public static final BitSet FOLLOW_8_in_statement85 = new BitSet(new long[]{0x0000000000000010L});
+	public static final BitSet FOLLOW_P_in_statement87 = new BitSet(new long[]{0x0000000000000200L});
+	public static final BitSet FOLLOW_9_in_statement92 = new BitSet(new long[]{0x0000000000000800L});
+	public static final BitSet FOLLOW_11_in_statement103 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_P_in_base_statement143 = new BitSet(new long[]{0x0000000000000080L});
+	public static final BitSet FOLLOW_7_in_base_statement145 = new BitSet(new long[]{0x0000000000000030L});
+	public static final BitSet FOLLOW_arith_expr_in_base_statement149 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_mult_arith_expr_in_arith_expr195 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_base_arith_expr_in_mult_arith_expr226 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_S_in_base_state_expr252 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_S_in_base_arith_expr272 = new BitSet(new long[]{0x0000000000000002L});
+	public static final BitSet FOLLOW_P_in_base_arith_expr282 = new BitSet(new long[]{0x0000000000000002L});
 }

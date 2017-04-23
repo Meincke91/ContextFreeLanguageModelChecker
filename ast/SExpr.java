@@ -3,17 +3,17 @@ package ContextFreeLanguageModelChecker.ast;
 import ContextFreeLanguageModelChecker.Environment;
 import ContextFreeLanguageModelChecker.VariableNotDefinedException;
 
-public class IdExpr extends ArithExpr {
+public class SExpr extends ArithExpr {
 
-	private String name;
+	private int value;
 	
-	public IdExpr(String name) {
-		this.name = name;
+	public SExpr(int value) {
+		this.value = value;
 	}
 	
 	@Override
 	public int evaluate(Environment env) throws VariableNotDefinedException {
-		return env.getVariable(name);
+		return value;
 	}
 
 }
